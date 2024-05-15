@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPASPWebForm_equipo-9", "TPASPWebForm_equipo-9\TPASPWebForm_equipo-9.csproj", "{9DA4C4F7-3F34-47DD-9047-6EF15300C793}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DA4C4F7-3F34-47DD-9047-6EF15300C793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DA4C4F7-3F34-47DD-9047-6EF15300C793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DA4C4F7-3F34-47DD-9047-6EF15300C793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DA4C4F7-3F34-47DD-9047-6EF15300C793}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {638CA773-0FD3-4461-B02E-F95C3BDFCA3B}
+	EndGlobalSection
+EndGlobal
