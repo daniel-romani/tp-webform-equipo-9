@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
-using Modelo;
 
 namespace Negocio
 {
@@ -101,7 +100,6 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
                 throw ex;
             }
             finally

@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Modelo;
 using System;
-using Modelo;
-using System.Windows.Forms;
-using System.Text.RegularExpressions;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Negocio
@@ -102,7 +100,6 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
                 throw ex;
             }
             finally
