@@ -5,6 +5,10 @@ VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPASPWebForm_equipo-9", "TPASPWebForm_equipo-9\TPASPWebForm_equipo-9.csproj", "{9DA4C4F7-3F34-47DD-9047-6EF15300C793}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelo", "Modelo\Modelo.csproj", "{489D7BDB-0C4D-4514-BC79-CE80CAD90AC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{AEB2F1CB-0269-4242-BCAF-A696907176D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9DA4C4F7-3F34-47DD-9047-6EF15300C793}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DA4C4F7-3F34-47DD-9047-6EF15300C793}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DA4C4F7-3F34-47DD-9047-6EF15300C793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{489D7BDB-0C4D-4514-BC79-CE80CAD90AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{489D7BDB-0C4D-4514-BC79-CE80CAD90AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{489D7BDB-0C4D-4514-BC79-CE80CAD90AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{489D7BDB-0C4D-4514-BC79-CE80CAD90AC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEB2F1CB-0269-4242-BCAF-A696907176D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEB2F1CB-0269-4242-BCAF-A696907176D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEB2F1CB-0269-4242-BCAF-A696907176D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEB2F1CB-0269-4242-BCAF-A696907176D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
