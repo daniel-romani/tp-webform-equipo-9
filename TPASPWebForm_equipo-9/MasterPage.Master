@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs" Inherits="TPASPWebForm_equipo_9.Site1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs" Inherits="TPASPWebForm_equipo_9.MasterPage" %>
 
 <!DOCTYPE html>
 
@@ -20,7 +20,7 @@
                 <a class="navbar-brand">Tienda Online</a>
                 <div>
                     <asp:DropDownList ID="DropDownList1" CssClass="btn btn-secondary dropdown-toggle" runat="server" Style="width: 200px;"></asp:DropDownList>
-                    <asp:Button ID="btn_vercarrito" runat="server" Text="Ver Carrito" CssClass="btn btn-warning" />
+                    <asp:Button ID="btn_carrito" runat="server" Text="Ver Carrito" CssClass="btn btn-warning" OnClick="btnCarrito_Click"/>
                 </div>
             </div>
         </nav>
@@ -37,7 +37,7 @@
         <div class="container">
             <div class="row">
                 <br />
-                <h5>Equipo 18</h5>
+                <h5>Equipo 9</h5>
                 <p>Integrantes: Tobias Moscatelli, Maximiliano Gabriel Rey, Daniel </p>
                 <br />
                 <h5>Repositorio de la web:</h5>

@@ -11,7 +11,7 @@ namespace TPASPWebForm_equipo_9
 {
 
 
-    public partial class Site1
+    public partial class MasterPage
     {
 
         /// <summary>
@@ -42,13 +42,13 @@ namespace TPASPWebForm_equipo_9
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
 
         /// <summary>
-        /// Control btn_vercarrito.
+        /// Control btn_carrito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_vercarrito;
+        protected global::System.Web.UI.WebControls.Button btn_carrito;
 
         /// <summary>
         /// Control ContentPlaceHolder1.

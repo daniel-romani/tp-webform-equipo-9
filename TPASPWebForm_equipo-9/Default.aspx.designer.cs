@@ -15,22 +15,22 @@ namespace TPASPWebForm_equipo_9
     {
 
         /// <summary>
-        /// Control Categoria.
+        /// Control dropDownCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Categoria;
+        protected global::System.Web.UI.WebControls.DropDownList dropDownCategoria;
 
         /// <summary>
-        /// Control Marca.
+        /// Control dropDownMarca.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Marca;
+        protected global::System.Web.UI.WebControls.DropDownList dropDownMarca;
 
         /// <summary>
         /// Control btnFiltrar.
@@ -67,5 +67,23 @@ namespace TPASPWebForm_equipo_9
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
+
+        /// <summary>
+        /// Control btnDetalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDetalle;
+
+        /// <summary>
+        /// Control btnAgregarArticulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarArticulo;
     }
 }
