@@ -42,29 +42,28 @@
         <% if (mostrarFiltrado)
            {
                 if (listaFiltrada.Count > 0 && listaFiltrada != null)
-                {
-                    foreach (Modelo.Articulo articulo in listaFiltrada)
-                    {
-                    %>
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="<%= articulo.Imagenes[0] %>" class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title"><%= articulo.Nombre %></h5>
-                                    <p class="card-text"><%= articulo.Descripcion %></p>
-                                    <p class="card-text"><small class="text-body-secondary"><%: articulo.Precio %></small></p>
-                                    <asp:Button ID="Button1" Text="Ver detalle" runat="server" data-bs-toggle="modal" data-bs-target="#articleModal" OnClientClick="return false" />
-                                    <asp:Button ID="Button2" Text="Agregar al carrito" runat="server" OnClick="btnAgregar_Click" />
-                                    <%--Dejar para el final de la implementacion, quiza no llegamos--%>
+                {%>
+                    <asp:Repeater ID="repiterArticulosFiltrados" runat="server">
+                        <ItemTemplate>
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <%--<img src="<%# Eval("Imagenes") %>" class="img-fluid rounded-start" alt="...">--%>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%# Eval("Nombre") %></h5>
+                                            <p class="card-text"><%# Eval("Descripcion") %></p>
+                                            <p class="card-text"><small class="text-body-secondary"><%# Eval("Precio") %></small></p>
+                                            <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" data-bs-toggle="modal" data-bs-target="#articleModal" OnClientClick="return false" />
+                                            <asp:Button ID="btnAgregarArticulo" Text="Agregar al carrito" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                 <% }
-                }
+                        </ItemTemplate>
+                    </asp:Repeater>
+               <% }
                 else
                 {
                     %>
@@ -75,40 +74,28 @@
            else
            {
                 if (listaArticulos.Count > 0 && listaArticulos != null)
-                {
-                    //Hashset es como un diccionario, no almacena valores repetidos.
-                    var articulosAgregados = new HashSet<int>();
-
-                    foreach (Modelo.Articulo articulo in listaArticulos)
-                    {
-                        //Aca comprueba si ya se agregó ese ID, o sea si el artículo ya fue cargado en las Cards
-                        if (!articulosAgregados.Contains(articulo.ID))
-                        {
-                            //Como el artículo no está agregado, lo agrega así no se repite.
-                            articulosAgregados.Add(articulo.ID);
-                            %>
-
+                {%>
+                    <asp:Repeater ID="repiterArticulos" runat="server">
+                        <ItemTemplate>
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="<%= articulo.Imagenes[0] %>" class="img-fluid rounded-start" alt="...">
+                                        <%--<img src="<%# Eval("Imagenes") %>" class="img-fluid rounded-start" alt="...">--%>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title"><%= articulo.Nombre %></h5>
-                                            <p class="card-text"><%= articulo.Descripcion %></p>
-                                            <p class="card-text"><small class="text-body-secondary"><%: articulo.Precio %></small></p>
+                                            <h5 class="card-title"><%# Eval("Nombre") %></h5>
+                                            <p class="card-text"><%# Eval("Descripcion") %></p>
+                                            <p class="card-text"><small class="text-body-secondary"><%# Eval("Precio") %></small></p>
                                             <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" data-bs-toggle="modal" data-bs-target="#articleModal" OnClientClick="return false" />
-                                            <asp:Button ID="btnAgregarArticulo" Text="Agregar al carrito" runat="server" OnClick="btnAgregar_Click" />
-                                            <%--Dejar para el final de la implementacion, quiza no llegamos--%>
+                                            <asp:Button ID="btnAgregarArticulo" Text="Agregar al carrito" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        <%
-                        }
-                    }
-                }
+                        </ItemTemplate>
+                    </asp:Repeater>
+               <% }
                 else
                 {
                     %>
@@ -116,9 +103,7 @@
                     <%
                 }
            } %>
-
-
-            </div>
+           </div>
                 
     </div>
 

@@ -90,6 +90,9 @@ namespace TPASPWebForm_equipo_9
 
             if (!IsPostBack)
             {
+                repiterArticulos.DataSource = listaArticulos;
+                repiterArticulos.DataBind();
+
                 //Carga las DropDownList
                 CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
                 List<Categoria> categorias = categoriaNegocio.listar();
@@ -174,20 +177,25 @@ namespace TPASPWebForm_equipo_9
                 else if (string.IsNullOrEmpty(categoriaSeleccionada) && string.IsNullOrEmpty(marcaSeleccionada))
                 {
                     mostrarFiltrado = false;
+                    return;
                 }
+
+
+                repiterArticulosFiltrados.DataSource = listaFiltrada;
+                repiterArticulosFiltrados.DataBind();
             }
             catch (Exception ex)
             {
                 System.Console.WriteLine(ex.Message);
             }
+
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            int ID = 3;
-            string NOMBRE = "awd";
-            decimal PRECIO = 345345345;
-            string IMAGEN = "https://cdn.pixabay.com/photo/2024/02/13/19/02/poster-8571685_1280.jpg";
+
+            string str_id = ((System.Web.UI.WebControls.Button)sender).CommandArgument;
+            int ID = int.Parse(str_id);
 
             // Verifica si el artículo ya está en el carrito
             List<ItemShop> carrito = (List<ItemShop>)Session["Carrito"];
@@ -203,11 +211,8 @@ namespace TPASPWebForm_equipo_9
             {
                 // Si devuelve null, el item no se encuentra en la lista, por lo que crea uno.
                 ItemShop nuevoItem = new ItemShop();
-                nuevoItem.ID = ID;
-                nuevoItem.Nombre = NOMBRE;
-                nuevoItem.Precio = PRECIO;
-                nuevoItem.Imagen = IMAGEN;
-                nuevoItem.Cantidad = 1;
+                nuevoItem = getArticulo(ID);
+
                 carrito.Add(nuevoItem);
             }
 
@@ -218,5 +223,26 @@ namespace TPASPWebForm_equipo_9
             MasterPage master = (MasterPage)this.Master;
             master.CargarArticulosEnCarrito();
         }
+
+        public ItemShop getArticulo(int ID)
+        {
+            ItemShop itemFiltrado = new ItemShop();
+
+            foreach(Articulo item in listaArticulos)
+            {
+                if(item.ID == ID)
+                {
+                    itemFiltrado.ID = item.ID;
+                    itemFiltrado.Nombre = item.Nombre;
+                    itemFiltrado.Precio = item.Precio;
+                    itemFiltrado.Cantidad = 1;
+                    return itemFiltrado;
+                }
+            }
+            
+            return null;
+
+        }
+
     }
 }
