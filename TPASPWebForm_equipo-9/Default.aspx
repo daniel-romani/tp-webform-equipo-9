@@ -43,7 +43,7 @@
            {
                 if (listaFiltrada.Count > 0 && listaFiltrada != null)
                 {%>
-                    <asp:Repeater ID="repiterArticulosFiltrados" runat="server">
+                    <asp:Repeater ID="repeaterArticulosFiltrados" runat="server">
                         <ItemTemplate>
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
@@ -55,7 +55,7 @@
                                             <h5 class="card-title"><%# Eval("Nombre") %></h5>
                                             <p class="card-text"><%# Eval("Descripcion") %></p>
                                             <p class="card-text"><small class="text-body-secondary"><%# Eval("Precio") %></small></p>
-                                            <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" data-bs-toggle="modal" data-bs-target="#articleModal" OnClientClick="return false" />
+                                            <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" OnClick="btnDetalle_Click" CommandArgument='<%# Eval("ID") %>' />
                                             <asp:Button ID="btnAgregarArticulo" Text="Agregar al carrito" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' />
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@
            {
                 if (listaArticulos.Count > 0 && listaArticulos != null)
                 {%>
-                    <asp:Repeater ID="repiterArticulos" runat="server">
+                    <asp:Repeater ID="repeaterArticulos" runat="server">
                         <ItemTemplate>
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
@@ -87,7 +87,7 @@
                                             <h5 class="card-title"><%# Eval("Nombre") %></h5>
                                             <p class="card-text"><%# Eval("Descripcion") %></p>
                                             <p class="card-text"><small class="text-body-secondary"><%# Eval("Precio") %></small></p>
-                                            <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" data-bs-toggle="modal" data-bs-target="#articleModal" OnClientClick="return false" />
+                                            <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" OnClick="btnDetalle_Click" CommandArgument='<%# Eval("ID") %>' />
                                             <asp:Button ID="btnAgregarArticulo" Text="Agregar al carrito" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' />
                                         </div>
                                     </div>
@@ -107,19 +107,29 @@
                 
     </div>
 
+    <script type="text/javascript">
+        function openModal1() {
+            var myModal = new bootstrap.Modal(document.getElementById('articleModal'), { keyboard: false });
+            myModal.show();
+        }
+    </script>
+
     <div class="modal fade" id="articleModal" tabindex="-1" aria-labelledby="Articulo" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="Articulo">""</h1>
+                    <h1 class="modal-title fs-5" id="Articulo">"<%= articuloSeleccionado.Nombre %>"</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>This is a small modal.</p>
+                    <p><%= articuloSeleccionado.Descripcion %></p>
+                    <p><%= articuloSeleccionado.Precio %></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        
+                        <%--Me esta tirando error por null, asi que habria que revisarlo para que pase bien las cosas--%>
+                        <%--<asp:Button ID="btnAgregarArticulo" Text="Agregar al carrito" runat="server" OnClick="btnAgregar_Click" CommandArgument="<%= articuloSeleccionado.ID %>" />--%>
                 </div>
             </div>
         </div>

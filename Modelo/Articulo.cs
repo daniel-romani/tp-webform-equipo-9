@@ -16,6 +16,17 @@ namespace Modelo
 
         public List<string> Imagenes;
 
+        public Articulo()
+        {
+            ID = 0;
+            Cantidad = 0;
+            Codigo = "NULL";
+            Nombre = "NULL";
+            Descripcion = "NULL";
+            Precio = 0;
+            this.id_a_incrementar = 0;
+        }
+
         public int id_a_incrementar { get; set; }
     }
 }

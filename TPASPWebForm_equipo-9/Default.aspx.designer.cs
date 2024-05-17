@@ -51,21 +51,21 @@ namespace TPASPWebForm_equipo_9
         protected global::System.Web.UI.WebControls.Button btnReset;
 
         /// <summary>
-        /// Control repiterArticulosFiltrados.
+        /// Control repeaterArticulosFiltrados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repiterArticulosFiltrados;
+        protected global::System.Web.UI.WebControls.Repeater repeaterArticulosFiltrados;
 
         /// <summary>
-        /// Control repiterArticulos.
+        /// Control repeaterArticulos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repiterArticulos;
+        protected global::System.Web.UI.WebControls.Repeater repeaterArticulos;
     }
 }

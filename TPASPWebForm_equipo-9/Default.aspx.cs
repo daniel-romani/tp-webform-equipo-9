@@ -16,7 +16,7 @@ namespace TPASPWebForm_equipo_9
         private string categoriaSeleccionada;
         private string marcaSeleccionada;
         protected bool mostrarFiltrado = false;
-        public Articulo articuloSeleccionado = null;
+        public Articulo articuloSeleccionado = new Articulo();
         public int id;
 
         public List<Articulo> listaFiltrada { get; set; }
@@ -35,11 +35,6 @@ namespace TPASPWebForm_equipo_9
                 System.Console.WriteLine(ex.Message);    
                 throw;
             }
-        }
-
-        private Articulo CargarComponentesCarrito()
-        {
-            return null;
         }
 
         private List<Articulo> EncontrarRepetidos()
@@ -86,12 +81,10 @@ namespace TPASPWebForm_equipo_9
         {
             CargarComponentes();
 
-            articuloSeleccionado = CargarComponentesCarrito();
-
             if (!IsPostBack)
             {
-                repiterArticulos.DataSource = listaArticulos;
-                repiterArticulos.DataBind();
+                repeaterArticulos.DataSource = listaArticulos;
+                repeaterArticulos.DataBind();
 
                 //Carga las DropDownList
                 CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
@@ -112,7 +105,6 @@ namespace TPASPWebForm_equipo_9
                 dropDownMarca.DataBind();
                 //ddlMarcas.Items.Insert(0, new ListItem("<Selecciona Marca>", ""));
                 dropDownMarca.Items.Insert(0, new ListItem("<Selecciona Marca>", string.Empty));
-
             }
 
         }
@@ -181,8 +173,8 @@ namespace TPASPWebForm_equipo_9
                 }
 
 
-                repiterArticulosFiltrados.DataSource = listaFiltrada;
-                repiterArticulosFiltrados.DataBind();
+                repeaterArticulosFiltrados.DataSource = listaFiltrada;
+                repeaterArticulosFiltrados.DataBind();
             }
             catch (Exception ex)
             {
@@ -193,6 +185,7 @@ namespace TPASPWebForm_equipo_9
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            System.Console.WriteLine("Agregando Item a carrito");
 
             string str_id = ((System.Web.UI.WebControls.Button)sender).CommandArgument;
             int ID = int.Parse(str_id);
@@ -211,7 +204,7 @@ namespace TPASPWebForm_equipo_9
             {
                 // Si devuelve null, el item no se encuentra en la lista, por lo que crea uno.
                 ItemShop nuevoItem = new ItemShop();
-                nuevoItem = getArticulo(ID);
+                nuevoItem = getArticuloCarrito(ID);
 
                 carrito.Add(nuevoItem);
             }
@@ -224,7 +217,7 @@ namespace TPASPWebForm_equipo_9
             master.CargarArticulosEnCarrito();
         }
 
-        public ItemShop getArticulo(int ID)
+        public ItemShop getArticuloCarrito(int ID)
         {
             ItemShop itemFiltrado = new ItemShop();
 
@@ -244,5 +237,31 @@ namespace TPASPWebForm_equipo_9
 
         }
 
+        public Articulo getArticulo(int ID)
+        {
+            foreach (Articulo item in listaArticulos)
+            {
+                if (item.ID == ID)
+                { 
+                    return item;
+                }
+            }
+
+            return null;
+
+        }
+
+        protected void btnDetalle_Click(object sender, EventArgs e)
+        {
+            System.Console.WriteLine("Entro a Detalle_Click");
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal1();", true);
+
+            string str_id = ((System.Web.UI.WebControls.Button)sender).CommandArgument;
+            int ID = int.Parse(str_id);
+
+            articuloSeleccionado = getArticulo(ID);
+
+        }
     }
 }
