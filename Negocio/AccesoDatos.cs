@@ -9,7 +9,6 @@ namespace Negocio
         private SqlCommand comando;
         private SqlDataReader lector;
 
-
         public SqlDataReader Lector
         {
             get { return lector; }

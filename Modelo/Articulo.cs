@@ -17,6 +17,7 @@ namespace Modelo
 
         public List<string> Imagenes;
 
+
         public Articulo()
         {
             ID = 0;

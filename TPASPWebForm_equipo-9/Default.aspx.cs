@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Schema;
 
 
 namespace TPASPWebForm_equipo_9
@@ -182,10 +183,14 @@ namespace TPASPWebForm_equipo_9
             }
 
         }
-
+        Decimal totalAcumulado = 0;
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             System.Console.WriteLine("Agregando Item a carrito");
+            List<Articulo> listaarticulo = new List<Articulo>();
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            listaarticulo = articuloNegocio.listar();
+            Articulo articulo = new Articulo();
 
             string str_id = ((System.Web.UI.WebControls.Button)sender).CommandArgument;
             int ID = int.Parse(str_id);
@@ -197,6 +202,7 @@ namespace TPASPWebForm_equipo_9
             //En caso de que hayan repetidos, itemExistente queda distinto a null, por lo que solo se incrementa la cantidad
             if (itemExistente != null)
             {
+
                 // Si el artículo ya está en el carrito, incrementa la cantidad
                 itemExistente.Cantidad += 1;
             }
@@ -207,15 +213,21 @@ namespace TPASPWebForm_equipo_9
                 nuevoItem = getArticuloCarrito(ID);
 
                 carrito.Add(nuevoItem);
+                articulo = listaarticulo.Find(item => item.ID == ID);
+                WebForm2.AgregarArticuloCarrito(articulo);
             }
+             totalAcumulado = CalcularTotalAcumulado(carrito, listaarticulo);
 
             // Actualiza el carrito con cada click
             Session["Carrito"] = carrito;
+            Session["TotalAcumulado"] = totalAcumulado;
 
             // creo un objeto master (la Master Page) y llamo a su funcion 
             MasterPage master = (MasterPage)this.Master;
             master.CargarArticulosEnCarrito();
         }
+
+       
 
         public ItemShop getArticuloCarrito(int ID)
         {
@@ -262,6 +274,26 @@ namespace TPASPWebForm_equipo_9
 
             articuloSeleccionado = getArticulo(ID);
 
+        }
+        public decimal CalcularTotalAcumulado(List<ItemShop> carrito, List<Articulo> listaarticulo)
+        {
+            decimal totalAcumulado = 0;
+
+            foreach (var itemExistente in carrito)
+            {
+                // Busca el artículo correspondiente en listaarticulo
+                var articulo = listaarticulo.FirstOrDefault(a => a.ID == itemExistente.ID);
+
+                if (articulo != null)
+                {
+                   
+                    decimal subtotal = articulo.Precio * itemExistente.Cantidad;
+                   
+                    totalAcumulado += subtotal;
+                }
+            }
+
+            return totalAcumulado;
         }
     }
 }

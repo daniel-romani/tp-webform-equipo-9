@@ -6,7 +6,7 @@ using System.Linq;
 namespace Negocio
 {
     internal class ImagenNegocio
-    {
+    { 
         public List<Imagen> listar()
         {
             List<Imagen> listaimagen = new List<Imagen>();
