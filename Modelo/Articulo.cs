@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using static System.Net.WebRequestMethods;
 
 namespace Modelo
 {
@@ -24,6 +25,7 @@ namespace Modelo
             Nombre = "NULL";
             Descripcion = "NULL";
             Precio = 0;
+            Imagenes = new List<string>();
             this.id_a_incrementar = 0;
         }
 

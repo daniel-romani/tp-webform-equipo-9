@@ -40,7 +40,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
         <%-- Decide si mostrar una lista filtrada o la lista completa --%> 
         <% if (mostrarFiltrado)
-           {
+            {
                 if (listaFiltrada.Count > 0 && listaFiltrada != null)
                 {%>
                     <asp:Repeater ID="repeaterArticulosFiltrados" runat="server">
@@ -48,7 +48,7 @@
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <%--<img src="<%# Eval("Imagenes") %>" class="img-fluid rounded-start" alt="...">--%>
+                                        <img src="<%# Eval("Imagen") %>" class="img-fluid rounded-start" alt="...">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
@@ -64,23 +64,23 @@
                         </ItemTemplate>
                     </asp:Repeater>
                <% }
-                else
-                {
+                   else
+                   {
                     %>
                     <h1>No hay artículos para filtrar...</h1>
                     <%
-                }
-           }
-           else
-           {
-                if (listaArticulos.Count > 0 && listaArticulos != null)
-                {%>
+                            }
+                        }
+                        else
+                        {
+                            if (listaArticulos.Count > 0 && listaArticulos != null)
+                            {%>
                     <asp:Repeater ID="repeaterArticulos" runat="server">
                         <ItemTemplate>
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <%--<img src="<%# Eval("Imagenes") %>" class="img-fluid rounded-start" alt="...">--%>
+                                        <img src="<%# Eval("Imagen") %>" class="img-fluid rounded-start" alt="...">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
@@ -96,13 +96,13 @@
                         </ItemTemplate>
                     </asp:Repeater>
                <% }
-                else
-                {
+                   else
+                   {
                     %>
                     <h1>No hay artículos para filtrar...</h1>
                     <%
-                }
-           } %>
+                            }
+                        } %>
            </div>
                 
     </div>
@@ -122,6 +122,37 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <%--Se carga el carrousel de imagenes--%>
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                            <%for(int i = 0; i < articuloSeleccionado.Imagenes.Count; i++)
+                              {
+                                    if(i == 0)
+                                    {%>
+                                        <div class="carousel-item active">
+                                            <img src="<%=articuloSeleccionado.Imagenes[i] %>" class="d-block w-100" alt="...">
+                                        </div>
+                                     <%
+                                    }
+                                    else
+                                    { %>
+                                        <div class="carousel-item">
+                                            <img src="<%=articuloSeleccionado.Imagenes[i] %>" class="d-block w-100" alt="...">
+                                        </div>
+                                    <%
+                                    }
+                              }%>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <%--Muestra la descripcion y el precio--%>
                     <p><%= articuloSeleccionado.Descripcion %></p>
                     <p><%= articuloSeleccionado.Precio %></p>
                 </div>
