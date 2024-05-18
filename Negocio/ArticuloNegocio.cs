@@ -57,7 +57,10 @@ namespace Negocio
                     }
 
                     if (!(datos.Lector["Precio"] is DBNull))
-                        objetoArticulo.Precio = (decimal)datos.Lector["Precio"];
+                    {
+                        decimal precio = (decimal)datos.Lector["Precio"];
+                        objetoArticulo.Precio = decimal.Round(precio, 2);
+                    }
 
 
                     objetoArticulo.Imagenes = new List<string>();
