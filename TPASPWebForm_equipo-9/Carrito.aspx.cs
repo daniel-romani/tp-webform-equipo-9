@@ -12,6 +12,8 @@ namespace TPASPWebForm_equipo_9
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
+        public decimal totalAcumulado = 0;
+       
         private static CarritoManager carritoManager = new CarritoManager();
 
         public List<ItemShop> carrito;
@@ -35,22 +37,78 @@ namespace TPASPWebForm_equipo_9
             GridViewCarrito.DataSource = carritoManager.ObtenerArticulos();
             GridViewCarrito.DataBind();
         }
-
+        
         protected void GridViewCarrito_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            MasterPage master = this.Master as MasterPage;
             if (e.CommandName == "Eliminar")
             {
                 int id = Convert.ToInt32(e.CommandArgument);
                 carritoManager.EliminarArticulo(id);
+                
+                EliminarArticulosEnCarrito(id);
                 CargarCarrito();
+                
             }
 
         }
+
         public static void AgregarArticuloCarrito (Articulo articulo)
         {
             carritoManager.AgregarArticulo(articulo);
            
         }
+
+
+        public decimal CalcularTotalAcumulado(List<ItemShop> carrito, List<Articulo> listaarticulo)
+        {
+            foreach (var itemExistente in carrito)
+            {
+
+                var articulo = listaarticulo.FirstOrDefault(a => a.ID == itemExistente.ID);
+
+                if (articulo != null)
+                {
+                    decimal subtotal = articulo.Precio * itemExistente.Cantidad;
+                    totalAcumulado += subtotal;
+                }
+            }
+
+            return totalAcumulado;
+        }
+
        
+
+        public void EliminarArticulosEnCarrito(int articuloID)
+        {
+            List<Articulo> listaArticulo = new List<Articulo>();
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            listaArticulo = articuloNegocio.listar();
+
+            if (Session["Carrito"] != null)
+            {
+                List<ItemShop> carrito = (List<ItemShop>)Session["Carrito"];
+
+
+                ItemShop itemAEliminar = carrito.FirstOrDefault(item => item.ID == articuloID);
+                if (itemAEliminar != null)
+                {
+
+                    carrito.Remove(itemAEliminar);
+
+                    decimal totalAcumulado = CalcularTotalAcumulado(carrito, listaArticulo);
+                    Session["Carrito"] = carrito;
+                    Session["TotalAcumulado"] = totalAcumulado;
+                    
+
+                }
+            }
+
+            MasterPage master = (MasterPage)this.Master;
+            master.CargarArticulosEnCarrito();
+
+
+        }
+
     }
 }

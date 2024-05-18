@@ -19,6 +19,8 @@ namespace TPASPWebForm_equipo_9
         protected bool mostrarFiltrado = false;
         public Articulo articuloSeleccionado = new Articulo();
         public int id;
+       
+       
 
         public List<Articulo> listaFiltrada { get; set; }
 
@@ -277,23 +279,21 @@ namespace TPASPWebForm_equipo_9
         }
         public decimal CalcularTotalAcumulado(List<ItemShop> carrito, List<Articulo> listaarticulo)
         {
-            decimal totalAcumulado = 0;
-
             foreach (var itemExistente in carrito)
             {
-                // Busca el artículo correspondiente en listaarticulo
+               
                 var articulo = listaarticulo.FirstOrDefault(a => a.ID == itemExistente.ID);
 
                 if (articulo != null)
                 {
-                   
                     decimal subtotal = articulo.Precio * itemExistente.Cantidad;
-                   
                     totalAcumulado += subtotal;
                 }
             }
 
             return totalAcumulado;
         }
+        
+        
     }
 }
