@@ -15,6 +15,10 @@
         footer {
             margin-top: auto;
         }
+
+        .custom-text { /* Tamaño de fuente más grande */
+            font-weight:600; /* Texto en negrita */
+        }
     </style>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -28,9 +32,11 @@
     <form id="form1" runat="server">
         <!--INICIO NAV-->
         <nav class="navbar" style="background-color: #FFE600;">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="Default.aspx">Tienda Online</a>
+            <div class="container">
                 <div>
+                    <a class="navbar-brand custom-text" href="Default.aspx">!MercadoPocoLibre &#x1F4B0;</a>
+                </div>
+                <div style="margin-left: auto;">
                     <asp:DropDownList ID="DropDownList1" CssClass="btn btn-light dropdown-toggle" runat="server" Style="width: 200px;"></asp:DropDownList>
                     <asp:Button ID="btn_carrito" runat="server" Text="Ver Carrito" CssClass="btn btn-success" OnClick="btnCarrito_Click" />
                 </div>

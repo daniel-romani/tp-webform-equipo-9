@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <%--Carrousel inicial de ofertas, completamente visual y estetico. Se probo el funcionamiento--%>
-    <div style="background-color: #F60001;">
+    <div style="background-color: #F60001; padding-top: 20px; padding-bottom: 30px">
         <div id="carousel" class="carousel slide" data-bs-theme="dark" data-bs-ride="carousel" data-bs-pause="false">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
