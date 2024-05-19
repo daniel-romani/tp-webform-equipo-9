@@ -12,14 +12,32 @@ namespace TPASPWebForm_equipo_9
     public partial class WebForm1 : System.Web.UI.Page
     {
         public List<Articulo> listaArticulos = new List<Articulo>();
-        private string categoriaSeleccionada;
-        private string marcaSeleccionada;
         protected bool mostrarFiltrado = false;
         public Articulo articuloSeleccionado = new Articulo();
         public int id;
        
-       
-
+        public string marcaSeleccionada
+        {
+            get
+            {
+                return (string)Session["marcaSeleccionada"];
+            }
+            set
+            {
+                Session["marcaSeleccionada"] = value;
+            }
+        }
+        public string categoriaSeleccionada
+        {
+            get
+            {
+                return (string)Session["categoriaSeleccionada"];
+            }
+            set
+            {
+                Session["categoriaSeleccionada"] = value;
+            }
+        }
         public List<Articulo> listaFiltrada { get; set; }
 
         private void CargarComponentes()
@@ -126,54 +144,15 @@ namespace TPASPWebForm_equipo_9
         }
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
+
             listaFiltrada = new List<Articulo>();
 
             try
             {
-                //Lista filtrada solo por Marcas
-                if (categoriaSeleccionada == null && marcaSeleccionada != null)
-                {
-                    foreach (Articulo item in listaArticulos)
-                    {
-                        if (item.Marca.Id == int.Parse(marcaSeleccionada))
-                        {
-                            listaFiltrada.Add(item);
-                        }
-                    }
-                    mostrarFiltrado = true;
-                }
-
-                //Lista filtrada solo por Categorias
-                else if (categoriaSeleccionada != null && marcaSeleccionada == null)
-                {
-                    foreach (Articulo item in listaArticulos)
-                    {
-                        if (item.Categoria.Id == int.Parse(categoriaSeleccionada))
-                        {
-                            listaFiltrada.Add(item);
-                        }
-                    }
-                    mostrarFiltrado = true;
-                }
-                //Lista filtrada por ambas condiciones
-                else if (categoriaSeleccionada != null && marcaSeleccionada != null)
-                {
-                    foreach (Articulo item in listaArticulos)
-                    {
-                        if (item.Categoria.Id == int.Parse(categoriaSeleccionada) && item.Marca.Id == int.Parse(marcaSeleccionada))
-                        {
-                            listaFiltrada.Add(item);
-                        }
-                    }
-                    mostrarFiltrado = true;
-                }
-                else if (string.IsNullOrEmpty(categoriaSeleccionada) && string.IsNullOrEmpty(marcaSeleccionada))
-                {
-                    mostrarFiltrado = false;
-                    return;
-                }
-
-
+                listaFiltrada = listaArticulos.Where(l =>
+                    (string.IsNullOrEmpty(categoriaSeleccionada) || l.Categoria.Id == int.Parse(categoriaSeleccionada)) &&
+                    (string.IsNullOrEmpty(marcaSeleccionada) || l.Marca.Id == int.Parse(marcaSeleccionada))).ToList();
+                mostrarFiltrado = true;
                 repeaterArticulosFiltrados.DataSource = listaFiltrada;
                 repeaterArticulosFiltrados.DataBind();
             }
@@ -181,6 +160,52 @@ namespace TPASPWebForm_equipo_9
             {
                 System.Console.WriteLine(ex.Message);
             }
+
+            
+                ////Lista filtrada solo por Marcas
+                //if (categoriaSeleccionada == null && marcaSeleccionada != null)
+                //{
+                //    foreach (Articulo item in listaArticulos)
+                //    {
+                //        if (item.Marca.Id == int.Parse(marcaSeleccionada))
+                //        {
+                //            listaFiltrada.Add(item);
+                //        }
+                //    }
+                //    mostrarFiltrado = true;
+                //}
+
+                ////Lista filtrada solo por Categorias
+                //else if (categoriaSeleccionada != null && marcaSeleccionada == null)
+                //{
+                //    foreach (Articulo item in listaArticulos)
+                //    {
+                //        if (item.Categoria.Id == int.Parse(categoriaSeleccionada))
+                //        {
+                //            listaFiltrada.Add(item);
+                //        }
+                //    }
+                //    mostrarFiltrado = true;
+                //}
+                ////Lista filtrada por ambas condiciones
+                //else if (categoriaSeleccionada != null && marcaSeleccionada != null)
+                //{
+                //    foreach (Articulo item in listaArticulos)
+                //    {
+                //        if (item.Categoria.Id == int.Parse(categoriaSeleccionada) && item.Marca.Id == int.Parse(marcaSeleccionada))
+                //        {
+                //            listaFiltrada.Add(item);
+                //        }
+                //    }
+                //    mostrarFiltrado = true;
+                //}
+                //else if (string.IsNullOrEmpty(categoriaSeleccionada) && string.IsNullOrEmpty(marcaSeleccionada))
+                //{
+                //    mostrarFiltrado = false;
+                //    return;
+                //}
+
+
 
         }
         
