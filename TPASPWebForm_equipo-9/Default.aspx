@@ -74,13 +74,13 @@
                                 <div class="card mb-3 mx-1" style="max-width: 400px; background-color: #FFFFFF">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            <img src="<%# Eval("Imagen") %>" class="img-fluid rounded-start" alt="...">
+                                            <img src="<%# Eval("Imagen") %>"  onerror="this.src='https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg'" class="img-fluid rounded-start" alt="...">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h5 class="card-title"><%# Eval("Nombre") %></h5>
                                                 <p class="card-text"><%# Eval("Descripcion") %></p>
-                                                <p class="card-text"><small class="text-body-secondary"><%# Eval("Precio") %></small></p>
+                                                <p class="card-text" style="color: #198754;"><small class="text-body-secondary"><%# Eval("Precio") %></small></p>
                                                 <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" OnClick="btnDetalle_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-secondary me-3" />
                                                 <asp:Button ID="btnAgregarArticulo" Text="Comprar" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-success" />
                                             </div>
@@ -106,13 +106,15 @@
                                 <div class="card mb-3 mx-1" style="max-width: 400px; background-color: #FFFFFF">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            <img src="<%# Eval("Imagen") %>" class="img-fluid rounded-start" alt="...">
+                                            <img src="<%# Eval("Imagen") %>" onerror="this.src='https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg'" class="img-fluid rounded-start" alt="...">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h5 class="card-title"><%# Eval("Nombre") %></h5>
                                                 <p class="card-text"><%# Eval("Descripcion") %></p>
-                                                <p class="card-text"><small class="text-body-secondary"><%# Eval("Precio") %></small></p>
+                                                <strong><span style="color: #198754; margin-left: auto; font-size: 1.1em;">$ <%# Eval("Precio") %></span> </strong>
+                                                <p class="card-text"><small class="text-body-secondary" ></small></p>
+                                                <hr />
                                                 <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" OnClick="btnDetalle_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-secondary me-3" />
                                                 <asp:Button ID="btnAgregarArticulo" Text="Comprar" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-success" />
                                             </div>
@@ -144,23 +146,24 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="Articulo">"<%= articuloSeleccionado.Nombre %>"</h1>
+                    <h1 class="modal-title fs-5" id="Articulo" style="max-width: 90%; word-wrap: break-word;">"<%= articuloSeleccionado.Nombre %>"</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="overflow-y: auto">
                     <%--Se carga el carrousel de imagenes--%>
-                    <div id="carouselExample" class="carousel slide" data-bs-theme="dark">
+                    <div style="background-color: #bebebe">
+                    <div id="carouselExample" class="carousel slide" data-bs-theme="dark" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                               <%for(int i = 0; i < articuloSeleccionado.Imagenes.Count; i++)
                               {
                                     if(i == 0)
                                     {%>
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%=i %>" class="active" aria-current="true" aria-label="Slide <%=i+1 %>"></button>
+                                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="<%=i %>" class="active" aria-current="true" aria-label="Slide <%=i+1 %>"></button>
                                      <%
                                     }
                                     else
                                     { %>
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%=i %>" aria-label="Slide <%=i+1 %>"></button>
+                                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="<%=i %>" aria-label="Slide <%=i+1 %>"></button>
                                     <%
                                     }
                               }%>
@@ -171,19 +174,21 @@
                                     if(i == 0)
                                     {%>
                                         <div class="carousel-item active">
-                                            <img style="object-fit: contain; width: 400px; height: 400px" src="<%=articuloSeleccionado.Imagenes[i] %>" class="d-block w-100" alt="...">
+                                            <img style="object-fit: contain; width: 400px; height: 400px" src="<%=articuloSeleccionado.Imagenes[i] %>"  onerror="this.src='https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg'" class="d-block w-100" alt="...">
                                         </div>
                                      <%
                                     }
                                     else
                                     { %>
                                         <div class="carousel-item">
-                                            <img style="object-fit: contain; width: 400px; height: 400px" src="<%=articuloSeleccionado.Imagenes[i] %>" class="d-block w-100" alt="...">
+                                            <img style="object-fit: contain; width: 400px; height: 400px" src="<%=articuloSeleccionado.Imagenes[i] %>"  onerror="this.src='https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg'" class="d-block w-100" alt="...">
                                         </div>
                                     <%
                                     }
                               }%>
                         </div>
+                        </div>
+                        <hr />
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
@@ -194,14 +199,20 @@
                         </button>
                     </div>
                     <%--Muestra la descripcion y el precio--%>
-                    <p><%= articuloSeleccionado.Descripcion %></p>
-                    <p><%= articuloSeleccionado.Precio %></p>
+                    <div class="texto-contenedor">
+                        <p style="font-size: 1.2em;"><strong>Descripción</strong></p>
+                        <p style="font-size: 1.1em;"> <%= articuloSeleccionado.Descripcion %></p>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        
-                        <%--Me esta tirando error por null, asi que habria que revisarlo para que pase bien las cosas--%>
-                        <%--<asp:Button ID="btnAgregarArticulo" Text="Agregar al carrito" runat="server" OnClick="btnAgregar_Click" CommandArgument="<%= articuloSeleccionado.ID %>" />--%>
+                    <div class="precio">
+                        <p>
+                            <strong><span style="color: #191919; font-size: 1.1em">Precio:</span></strong>
+                            <strong><span style="color: #198754; font-size: 1.1em; padding-left: 10px">$ <%= articuloSeleccionado.Precio %></span></strong>
+                        </p>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

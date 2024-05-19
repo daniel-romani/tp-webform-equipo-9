@@ -17,7 +17,22 @@
         }
 
         .custom-text { /* Tamaño de fuente más grande */
-            font-weight:600; /* Texto en negrita */
+            font-weight: 600; /* Texto en negrita */
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .modal-footer .precio {
+                margin-right: auto; /* Esto asegura que el precio esté alineado a la izquierda */
+            }
+        .texto-contenedor {
+            max-width: 100%; /* Asegura que el contenedor no exceda el ancho del modal */
+            word-wrap: break-word; /* Permite que las palabras largas se dividan y se ajusten al contenedor */
+            overflow-wrap: break-word; /* Permite que las palabras largas se dividan y se ajusten al contenedor */
         }
     </style>
 

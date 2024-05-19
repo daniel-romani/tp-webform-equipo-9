@@ -112,5 +112,10 @@ namespace TPASPWebForm_equipo_9
 
         }
 
+        protected void btnRedirigirCompra_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CompraFinalizada.aspx");
+        }
+
     }
 }

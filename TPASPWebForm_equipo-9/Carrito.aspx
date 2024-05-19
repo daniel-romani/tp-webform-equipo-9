@@ -21,7 +21,7 @@
             <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM6.854 8.146a.5.5 0 1 0-.708.708L7.293 10l-1.147 1.146a.5.5 0 0 0 .708.708L8 10.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 10l1.147-1.146a.5.5 0 0 0-.708-.708L8 9.293 6.854 8.146z" />
         </svg>
         <hr />
-        <asp:Button ID="btnRedirigir1" CssClass="btn btn-primary" runat="server" OnClick="btnRedirigir_Click" Text="Descubrir Productos" />
+        <asp:Button ID="btnRedirigir1" CssClass="btn btn-warning" runat="server" OnClick="btnRedirigir_Click" Text="&#x1F4E6; ¡Descubre muchas ofertas! &#x1F4E6;" />
     </div>
 
       <%}
@@ -54,11 +54,11 @@
                         <hr />
                         <%decimal totalRecuperado = (decimal)(Session["TotalAcumulado"] ?? 0m); %>
                         <p class="card-subtitle mb-2 text-body-secondary" style="padding-top: 10px">
-                            <strong><span style="color: #191919;font-size: 1.1em">Total:</span>  </strong>
-                            <strong><span style="color: #198754; margin-left: auto; font-size: 1.1em;"> <%=totalRecuperado%> </span> </strong>
+                            <strong><span style="color: #191919;font-size: 1.1em">Total:</span></strong>
+                            <strong><span style="color: #198754; margin-left: auto; font-size: 1.1em; padding-left: 15px">$ <%=totalRecuperado%> </span> </strong>
                         </p>
                         <div  style="padding-top: 10px">
-                            <asp:Button ID="btnContinuarCompra" CssClass="btn btn-success" runat="server" OnClick="btnRedirigir_Click" Text="Continuar Compra" />
+                            <asp:Button ID="btnContinuarCompra" CssClass="btn btn-success" runat="server" OnClick="btnRedirigirCompra_Click" Text="Continuar Compra" />
                         </div>
                     </div>
                 </div>
