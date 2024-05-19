@@ -24,13 +24,13 @@ namespace TPASPWebForm_equipo_9
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl empeza_el_carrito;
 
         /// <summary>
-        /// Control btnRedirigir.
+        /// Control btnRedirigir1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRedirigir;
+        protected global::System.Web.UI.WebControls.Button btnRedirigir1;
 
         /// <summary>
         /// Control GridViewCarrito.
@@ -40,5 +40,32 @@ namespace TPASPWebForm_equipo_9
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewCarrito;
+
+        /// <summary>
+        /// Control btnContinuarCompra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnContinuarCompra;
+
+        /// <summary>
+        /// Control H1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl H1;
+
+        /// <summary>
+        /// Control btnRedirigir2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRedirigir2;
     }
 }

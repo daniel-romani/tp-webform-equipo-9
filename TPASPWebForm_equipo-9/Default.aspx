@@ -49,7 +49,6 @@
             <div class="col">
                 <h5 style="color: #333333">Categoria</h5>
                 <asp:DropDownList ID="dropDownCategoria" CssClass="form-select" runat="server" OnSelectedIndexChanged="dropDownCategoria_SelectedIndexChanged"></asp:DropDownList>
-
             </div>
             <div class="col">
                 <h5 style="color: #333333">Marca</h5>
@@ -70,26 +69,26 @@
                 {
                     if (listaFiltrada.Count > 0 && listaFiltrada != null)
                     {%>
-            <asp:Repeater ID="repeaterArticulosFiltrados" runat="server">
-                <ItemTemplate>
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="<%# Eval("Imagen") %>" class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title"><%# Eval("Nombre") %></h5>
-                                    <p class="card-text"><%# Eval("Descripcion") %></p>
-                                    <p class="card-text"><small class="text-body-secondary"><%# Eval("Precio") %></small></p>
-                                    <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" OnClick="btnDetalle_Click" CommandArgument='<%# Eval("ID") %>' CssClass="me-2" />
-                                    <asp:Button ID="btnAgregarArticulo" Text="Agregar al carrito" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' />
+                        <asp:Repeater ID="repeaterArticulosFiltrados" runat="server">
+                            <ItemTemplate>
+                                <div class="card mb-3 mx-1" style="max-width: 400px; background-color: #FFFFFF">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="<%# Eval("Imagen") %>" class="img-fluid rounded-start" alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><%# Eval("Nombre") %></h5>
+                                                <p class="card-text"><%# Eval("Descripcion") %></p>
+                                                <p class="card-text"><small class="text-body-secondary"><%# Eval("Precio") %></small></p>
+                                                <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" OnClick="btnDetalle_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-secondary me-3" />
+                                                <asp:Button ID="btnAgregarArticulo" Text="Comprar" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-success" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </ItemTemplate>
-            </asp:Repeater>
+                            </ItemTemplate>
+                        </asp:Repeater>
             <% }
                 else
                 {
@@ -102,26 +101,26 @@
                 {
                     if (listaArticulos.Count > 0 && listaArticulos != null)
                     {%>
-            <asp:Repeater ID="repeaterArticulos" runat="server">
-                <ItemTemplate>
-                    <div class="card mb-3 mx-1" style="max-width: 400px; background-color: #FFFFFF">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="<%# Eval("Imagen") %>" class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title"><%# Eval("Nombre") %></h5>
-                                    <p class="card-text"><%# Eval("Descripcion") %></p>
-                                    <p class="card-text"><small class="text-body-secondary"><%# Eval("Precio") %></small></p>
-                                    <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" OnClick="btnDetalle_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-secondary me-3" />
-                                    <asp:Button ID="btnAgregarArticulo" Text="Comprar" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-success" />
+                        <asp:Repeater ID="repeaterArticulos" runat="server">
+                            <ItemTemplate>
+                                <div class="card mb-3 mx-1" style="max-width: 400px; background-color: #FFFFFF">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="<%# Eval("Imagen") %>" class="img-fluid rounded-start" alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><%# Eval("Nombre") %></h5>
+                                                <p class="card-text"><%# Eval("Descripcion") %></p>
+                                                <p class="card-text"><small class="text-body-secondary"><%# Eval("Precio") %></small></p>
+                                                <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" OnClick="btnDetalle_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-secondary me-3" />
+                                                <asp:Button ID="btnAgregarArticulo" Text="Comprar" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-success" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </ItemTemplate>
-            </asp:Repeater>
+                            </ItemTemplate>
+                        </asp:Repeater>
             <% }
                 else
                 {
