@@ -15,23 +15,24 @@ namespace TPASPWebForm_equipo_9
         protected bool mostrarFiltrado = false;
         public Articulo articuloSeleccionado = new Articulo();
         public int id;
+
        
-        public string marcaSeleccionada
+        public int marcaSeleccionada
         {
             get
             {
-                return (string)Session["marcaSeleccionada"];
+                return Session["marcaSeleccionada"] != null ? (int)Session["marcaSeleccionada"] : 0;
             }
             set
             {
                 Session["marcaSeleccionada"] = value;
             }
         }
-        public string categoriaSeleccionada
+        public int categoriaSeleccionada
         {
             get
             {
-                return (string)Session["categoriaSeleccionada"];
+                return Session["categoriaSeleccionada"] != null ? (int)Session["categoriaSeleccionada"] : 0;
             }
             set
             {
@@ -130,17 +131,22 @@ namespace TPASPWebForm_equipo_9
 
         protected void dropDownCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            categoriaSeleccionada = dropDownCategoria.SelectedValue;
+            categoriaSeleccionada = dropDownCategoria.SelectedIndex;
         }
+
         protected void dropDownMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
-            marcaSeleccionada = dropDownMarca.SelectedValue;
+            marcaSeleccionada = dropDownMarca.SelectedIndex;
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
             dropDownCategoria.SelectedIndex = 0;
             dropDownMarca.SelectedIndex = 0;
+
+            // Limpiar la sesion
+            Session["categoriaSeleccionada"] = 0;
+            Session["marcaSeleccionada"] = 0;
         }
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
@@ -150,8 +156,8 @@ namespace TPASPWebForm_equipo_9
             try
             {
                 listaFiltrada = listaArticulos.Where(l =>
-                    (string.IsNullOrEmpty(categoriaSeleccionada) || l.Categoria.Id == int.Parse(categoriaSeleccionada)) &&
-                    (string.IsNullOrEmpty(marcaSeleccionada) || l.Marca.Id == int.Parse(marcaSeleccionada))).ToList();
+                    (categoriaSeleccionada.Equals(0) || l.Categoria.Id == categoriaSeleccionada) &&
+                    (marcaSeleccionada.Equals(0)  || l.Marca.Id == marcaSeleccionada)).ToList();
                 mostrarFiltrado = true;
                 repeaterArticulosFiltrados.DataSource = listaFiltrada;
                 repeaterArticulosFiltrados.DataBind();
