@@ -10,7 +10,7 @@ namespace Negocio
     public class CarritoManager
     {
         private List<Articulo> _carrito;
-
+        private int CantidadArticulos;
         public CarritoManager()
         {
             _carrito = new List<Articulo>();

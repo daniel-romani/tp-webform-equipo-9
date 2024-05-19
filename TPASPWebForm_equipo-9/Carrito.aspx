@@ -32,6 +32,11 @@
                 <asp:BoundField DataField="Id" HeaderText="ID" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                 <asp:BoundField DataField="Precio" HeaderText="Precio" />
+                 <asp:TemplateField HeaderText="Cantidad">
+                <ItemTemplate>
+                    <asp:Label ID="LabelCantidad" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:Button ID="ButtonEliminar" runat="server" CssClass="btn btn-primary" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%# Eval ("ID") %>' />

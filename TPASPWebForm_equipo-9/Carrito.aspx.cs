@@ -12,7 +12,7 @@ namespace TPASPWebForm_equipo_9
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
-        public decimal totalAcumulado = 0;
+        
        
         private static CarritoManager carritoManager = new CarritoManager();
 
@@ -34,7 +34,8 @@ namespace TPASPWebForm_equipo_9
         
         private void CargarCarrito()
         {
-            GridViewCarrito.DataSource = carritoManager.ObtenerArticulos();
+            List<ItemShop> carrito = (List<ItemShop>)Session["Carrito"];
+            GridViewCarrito.DataSource = carrito;
             GridViewCarrito.DataBind();
         }
         
@@ -62,6 +63,7 @@ namespace TPASPWebForm_equipo_9
 
         public decimal CalcularTotalAcumulado(List<ItemShop> carrito, List<Articulo> listaarticulo)
         {
+            decimal totalAcumulado = 0;
             foreach (var itemExistente in carrito)
             {
 

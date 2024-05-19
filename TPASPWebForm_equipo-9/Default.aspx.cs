@@ -183,9 +183,10 @@ namespace TPASPWebForm_equipo_9
             }
 
         }
-        Decimal totalAcumulado = 0;
+        
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            decimal Acumulado = 0;
             System.Console.WriteLine("Agregando Item a carrito");
             List<Articulo> listaarticulo = new List<Articulo>();
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -216,11 +217,11 @@ namespace TPASPWebForm_equipo_9
                 articulo = listaarticulo.Find(item => item.ID == ID);
                 WebForm2.AgregarArticuloCarrito(articulo);
             }
-             totalAcumulado = CalcularTotalAcumulado(carrito, listaarticulo);
+             Acumulado = CalcularTotalAcumulado(carrito, listaarticulo);
 
             // Actualiza el carrito con cada click
             Session["Carrito"] = carrito;
-            Session["TotalAcumulado"] = totalAcumulado;
+            Session["TotalAcumulado"] = Acumulado;
 
             // creo un objeto master (la Master Page) y llamo a su funcion 
             MasterPage master = (MasterPage)this.Master;
@@ -277,6 +278,7 @@ namespace TPASPWebForm_equipo_9
         }
         public decimal CalcularTotalAcumulado(List<ItemShop> carrito, List<Articulo> listaarticulo)
         {
+            decimal totalAcumulado = 0;
             foreach (var itemExistente in carrito)
             {
                
