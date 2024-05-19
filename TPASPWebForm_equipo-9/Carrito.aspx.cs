@@ -36,6 +36,7 @@ namespace TPASPWebForm_equipo_9
         {
             List<ItemShop> carrito = (List<ItemShop>)Session["Carrito"];
             GridViewCarrito.DataSource = carrito;
+            GridViewCarrito.Columns[0].Visible = false;
             GridViewCarrito.DataBind();
         }
         

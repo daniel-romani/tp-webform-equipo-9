@@ -59,7 +59,7 @@ namespace Negocio
                     if (!(datos.Lector["Precio"] is DBNull))
                     {
                         decimal precio = (decimal)datos.Lector["Precio"];
-                        objetoArticulo.Precio = decimal.Round(precio, 2);
+                        objetoArticulo.Precio = (Math.Truncate(precio * 100) / 100);
                     }
 
 
