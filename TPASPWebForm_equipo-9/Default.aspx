@@ -64,73 +64,38 @@
         <hr />
         <br />
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <%-- Decide si mostrar una lista filtrada o la lista completa --%>
-            <% if (mostrarFiltrado)
-                {
-                    if (listaFiltrada.Count > 0 && listaFiltrada != null)
-                    {%>
-                        <asp:Repeater ID="repeaterArticulosFiltrados" runat="server">
-                            <ItemTemplate>
-                                <div class="card mb-3 mx-1" style="max-width: 400px; background-color: #FFFFFF">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="<%# Eval("Imagen") %>"  onerror="this.src='https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg'" class="img-fluid rounded-start" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><%# Eval("Nombre") %></h5>
-                                                <p class="card-text"><%# Eval("Descripcion") %></p>
-                                                <p class="card-text" style="color: #198754;"><small class="text-body-secondary"><%# Eval("Precio") %></small></p>
-                                                <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" OnClick="btnDetalle_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-secondary me-3" />
-                                                <asp:Button ID="btnAgregarArticulo" Text="Comprar" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-success" />
-                                            </div>
-                                        </div>
+            <%-- Muestra la lista de articulos --%>
+       <% if (listaFiltrada != null && listaFiltrada.Count > 0)
+          {%>
+                <asp:Repeater ID="repeaterArticulosFiltrados" runat="server">
+                    <ItemTemplate>
+                        <div class="card mb-3 mx-1" style="max-width: 400px; background-color: #FFFFFF">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="<%# Eval("Imagen") %>" onerror="this.src='https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg'" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%# Eval("Nombre") %></h5>
+                                        <p class="card-text"><%# Eval("Descripcion") %></p>
+                                        <strong><span style="color: #198754; margin-left: auto; font-size: 1.1em;">$ <%# Eval("Precio") %></span> </strong>
+                                        <p class="card-text"><small class="text-body-secondary"></small></p>
+                                        <hr />
+                                        <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" OnClick="btnDetalle_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-secondary me-3" />
+                                        <asp:Button ID="btnAgregarArticulo" Text="Comprar" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-success" />
                                     </div>
                                 </div>
-                            </ItemTemplate>
-                        </asp:Repeater>
-            <% }
-                else
-                {
-            %>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+      <%  }
+          else
+          {
+          %>
             <h1>No hay artículos para filtrar...</h1>
-            <%
-                    }
-                }
-                else
-                {
-                    if (listaArticulos.Count > 0 && listaArticulos != null)
-                    {%>
-                        <asp:Repeater ID="repeaterArticulos" runat="server">
-                            <ItemTemplate>
-                                <div class="card mb-3 mx-1" style="max-width: 400px; background-color: #FFFFFF">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="<%# Eval("Imagen") %>" onerror="this.src='https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg'" class="img-fluid rounded-start" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><%# Eval("Nombre") %></h5>
-                                                <p class="card-text"><%# Eval("Descripcion") %></p>
-                                                <strong><span style="color: #198754; margin-left: auto; font-size: 1.1em;">$ <%# Eval("Precio") %></span> </strong>
-                                                <p class="card-text"><small class="text-body-secondary" ></small></p>
-                                                <hr />
-                                                <asp:Button ID="btnDetalle" Text="Ver detalle" runat="server" OnClick="btnDetalle_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-secondary me-3" />
-                                                <asp:Button ID="btnAgregarArticulo" Text="Comprar" runat="server" OnClick="btnAgregar_Click" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-success" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ItemTemplate>
-                        </asp:Repeater>
-            <% }
-                else
-                {
-            %>
-            <h1>No hay artículos para filtrar...</h1>
-            <%
-                    }
-                }%>
+        <%
+          }%>
         </div>
 
     </div>

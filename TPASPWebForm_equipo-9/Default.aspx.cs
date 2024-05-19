@@ -39,7 +39,19 @@ namespace TPASPWebForm_equipo_9
                 Session["categoriaSeleccionada"] = value;
             }
         }
-        public List<Articulo> listaFiltrada { get; set; }
+        public List<Articulo> listaFiltrada 
+        { 
+            get 
+            {
+                return listaArticulos.Where(l =>
+                    (categoriaSeleccionada.Equals(0) || l.Categoria.Id == categoriaSeleccionada) &&
+                    (marcaSeleccionada.Equals(0) || l.Marca.Id == marcaSeleccionada)).ToList();
+            } 
+            set
+            {
+
+            }
+        }
 
         private void CargarComponentes()
         {
@@ -103,8 +115,9 @@ namespace TPASPWebForm_equipo_9
 
             if (!IsPostBack)
             {
-                repeaterArticulos.DataSource = listaArticulos;
-                repeaterArticulos.DataBind();
+
+                Apply_Filters();
+
 
                 //Carga las DropDownList
                 CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
@@ -145,76 +158,22 @@ namespace TPASPWebForm_equipo_9
             dropDownMarca.SelectedIndex = 0;
 
             // Limpiar la sesion
-            Session["categoriaSeleccionada"] = 0;
-            Session["marcaSeleccionada"] = 0;
+            categoriaSeleccionada = 0;
+            marcaSeleccionada = 0;
+
+            Apply_Filters();
         }
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-
-            listaFiltrada = new List<Articulo>();
-
-            try
-            {
-                listaFiltrada = listaArticulos.Where(l =>
-                    (categoriaSeleccionada.Equals(0) || l.Categoria.Id == categoriaSeleccionada) &&
-                    (marcaSeleccionada.Equals(0)  || l.Marca.Id == marcaSeleccionada)).ToList();
-                mostrarFiltrado = true;
-                repeaterArticulosFiltrados.DataSource = listaFiltrada;
-                repeaterArticulosFiltrados.DataBind();
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex.Message);
-            }
-
-            
-                ////Lista filtrada solo por Marcas
-                //if (categoriaSeleccionada == null && marcaSeleccionada != null)
-                //{
-                //    foreach (Articulo item in listaArticulos)
-                //    {
-                //        if (item.Marca.Id == int.Parse(marcaSeleccionada))
-                //        {
-                //            listaFiltrada.Add(item);
-                //        }
-                //    }
-                //    mostrarFiltrado = true;
-                //}
-
-                ////Lista filtrada solo por Categorias
-                //else if (categoriaSeleccionada != null && marcaSeleccionada == null)
-                //{
-                //    foreach (Articulo item in listaArticulos)
-                //    {
-                //        if (item.Categoria.Id == int.Parse(categoriaSeleccionada))
-                //        {
-                //            listaFiltrada.Add(item);
-                //        }
-                //    }
-                //    mostrarFiltrado = true;
-                //}
-                ////Lista filtrada por ambas condiciones
-                //else if (categoriaSeleccionada != null && marcaSeleccionada != null)
-                //{
-                //    foreach (Articulo item in listaArticulos)
-                //    {
-                //        if (item.Categoria.Id == int.Parse(categoriaSeleccionada) && item.Marca.Id == int.Parse(marcaSeleccionada))
-                //        {
-                //            listaFiltrada.Add(item);
-                //        }
-                //    }
-                //    mostrarFiltrado = true;
-                //}
-                //else if (string.IsNullOrEmpty(categoriaSeleccionada) && string.IsNullOrEmpty(marcaSeleccionada))
-                //{
-                //    mostrarFiltrado = false;
-                //    return;
-                //}
-
-
-
+            Apply_Filters();
         }
-        
+
+        private void Apply_Filters()
+        {
+            repeaterArticulosFiltrados.DataSource = listaFiltrada;
+            repeaterArticulosFiltrados.DataBind();
+        }
+
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             decimal Acumulado = 0;
@@ -299,7 +258,7 @@ namespace TPASPWebForm_equipo_9
         {
             System.Console.WriteLine("Entro a Detalle_Click");
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal1();", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal1()", true);
 
             string str_id = ((System.Web.UI.WebControls.Button)sender).CommandArgument;
             int ID = int.Parse(str_id);
