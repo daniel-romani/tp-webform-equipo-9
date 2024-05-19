@@ -34,6 +34,7 @@
                         <asp:BoundField DataField="Id" HeaderText="ID" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                         <asp:BoundField DataField="Precio" HeaderText="Precio" />
+                         <asp:BoundField DataField="Total" HeaderText="Total" />
                         <asp:TemplateField HeaderText="Cantidad">
                             <ItemTemplate>
                                 <asp:Label ID="LabelCantidad" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
@@ -43,6 +44,11 @@
                             <ItemTemplate>
                                 <asp:Button ID="ButtonEliminar" runat="server" CssClass="btn btn-danger" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%# Eval ("ID") %>' />
                             </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Button ID="ButtonAgregar" runat="server" CssClass="btn btn-danger" Text="Agregar" CommandName="Agregar" CommandArgument='<%#Eval ("ID") %>'  />
+                        </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>

@@ -205,7 +205,7 @@ namespace TPASPWebForm_equipo_9
 
                 carrito.Add(nuevoItem);
                 articulo = listaarticulo.Find(item => item.ID == ID);
-                WebForm2.AgregarArticuloCarrito(articulo);
+                
             }
              Acumulado = CalcularTotalAcumulado(carrito, listaarticulo);
 
