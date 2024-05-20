@@ -20,7 +20,7 @@
                     <img style="object-fit: contain; width: auto; height: 300px" src="https://i.gyazo.com/a0ad38194283c93925d8f3f81662858d.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img style="object-fit: contain; width: auto; height: 300px" src="https://i.gyazo.com/1c1667fd6bc75b2e3b352ae28e09519d.png" class="d-block w-100" alt="...">
+                    <img style="object-fit: contain; width: auto; height: 300px" src="https://i.gyazo.com/5b7836e0725f93332d5d2cec61eab235.png" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
