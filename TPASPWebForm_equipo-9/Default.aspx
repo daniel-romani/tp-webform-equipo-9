@@ -14,13 +14,13 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img style="object-fit: contain; width: auto; height: 300px" src="https://i.gyazo.com/345f03cb15751fe1241a25224227bf08.png" class="d-block w-100" alt="...">
+                    <img style="object-fit: contain; width: auto; height: 300px" src="https://i.gyazo.com/94b95b5ae21059200e892f050ba822a3.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img style="object-fit: contain; width: auto; height: 300px" src="https://i.gyazo.com/27c4abd8145462db657642970728e8de.png" class="d-block w-100" alt="...">
+                    <img style="object-fit: contain; width: auto; height: 300px" src="https://i.gyazo.com/a0ad38194283c93925d8f3f81662858d.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img style="object-fit: contain; width: auto; height: 300px" src="https://i.gyazo.com/e983abd5baa22d6389adc954d6cba476.png" class="d-block w-100" alt="...">
+                    <img style="object-fit: contain; width: auto; height: 300px" src="https://i.gyazo.com/1c1667fd6bc75b2e3b352ae28e09519d.png" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
@@ -117,7 +117,7 @@
                 <div class="modal-body" style="overflow-y: auto">
                     <%--Se carga el carrousel de imagenes--%>
                     <div style="background-color: #bebebe">
-                    <div id="carouselExample" class="carousel slide" data-bs-theme="dark" data-bs-ride="carousel">
+                    <div id="carouselExample" class="carousel slide" data-bs-theme="dark">
                         <div class="carousel-indicators">
                               <%for(int i = 0; i < articuloSeleccionado.Imagenes.Count; i++)
                               {

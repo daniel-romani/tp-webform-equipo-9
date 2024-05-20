@@ -29,10 +29,28 @@
             .modal-footer .precio {
                 margin-right: auto; /* Esto asegura que el precio esté alineado a la izquierda */
             }
+
         .texto-contenedor {
             max-width: 100%; /* Asegura que el contenedor no exceda el ancho del modal */
             word-wrap: break-word; /* Permite que las palabras largas se dividan y se ajusten al contenedor */
             overflow-wrap: break-word; /* Permite que las palabras largas se dividan y se ajusten al contenedor */
+        }
+
+        .unidad-label {
+            background-color: #f0f0f0; /* Cambia este color según tus necesidades */
+            padding: 3px;
+            display: inline-block;
+            border: 3px solid #ccc; /* Agrega un borde para el efecto de cuadrado */
+            border-radius: 5px;
+        }
+
+        .separacion {
+            margin-right: 10px;
+        }
+
+        .btn-small {
+            padding: 2px 5px !important; /* Ajusta el relleno según sea necesario */
+            font-size: 12px !important; /* Ajusta el tamaño de la fuente según sea necesario */
         }
     </style>
 

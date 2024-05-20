@@ -231,6 +231,7 @@ namespace TPASPWebForm_equipo_9
                     itemFiltrado.ID = item.ID;
                     itemFiltrado.Nombre = item.Nombre;
                     itemFiltrado.Precio = item.Precio;
+                    itemFiltrado.Imagen = item.Imagen;
                     itemFiltrado.Cantidad = 1;
                     return itemFiltrado;
                 }

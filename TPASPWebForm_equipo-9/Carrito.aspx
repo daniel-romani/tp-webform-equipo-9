@@ -29,26 +29,34 @@
         {  %>
         
             <div style="padding-bottom: 10px">
-                <asp:GridView ID="GridViewCarrito" runat="server" AutoGenerateColumns="false" CssClass="table table-striped" OnRowCommand="GridViewCarrito_RowCommand">
+                <asp:GridView ID="GridViewCarrito" runat="server" AutoGenerateColumns="false" CssClass="table table-striped " OnRowCommand="GridViewCarrito_RowCommand">
                     <Columns>
                         <asp:BoundField DataField="Id" HeaderText="ID" />
-                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                        <asp:BoundField DataField="Precio" HeaderText="Precio" />
-                         <asp:BoundField DataField="Total" HeaderText="Total" />
-                        <asp:TemplateField HeaderText="Cantidad">
+                        <asp:TemplateField HeaderText="">
                             <ItemTemplate>
-                                <asp:Label ID="LabelCantidad" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
+                                <img style="object-fit: contain; width: auto; height: 50px" src="<%# Eval("Imagen") %>" onerror="this.src='https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg'" class="img-fluid rounded-start" alt="...">
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                        <asp:BoundField DataField="Nombre" HeaderText="Nombre">
+                            <ItemStyle Font-Bold="True" ForeColor="#4E5861" Font-Size="Medium" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="{0:C}" HtmlEncode="false">
+                            <ItemStyle Font-Bold="True" ForeColor="#4E5861" Font-Size="Medium" />
+                            </asp:BoundField>
+                        <asp:BoundField DataField="Total" HeaderText="Total" DataFormatString="{0:C}" HtmlEncode="false">
+                            <ItemStyle Font-Bold="True" ForeColor="#198754" Font-Size="Medium" />
+                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="">
                             <ItemTemplate>
-                                <asp:Button ID="ButtonEliminar" runat="server" CssClass="btn btn-danger" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%# Eval ("ID") %>' />
+                                <asp:Label ID="Espacio" runat="server" Text="|"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Button ID="ButtonAgregar" runat="server" CssClass="btn btn-danger" Text="Agregar" CommandName="Agregar" CommandArgument='<%#Eval ("ID") %>'  />
-                        </ItemTemplate>
+                        <asp:TemplateField HeaderText="">
+                            <ItemTemplate>
+                                <asp:Button ID="ButtonEliminar" runat="server" CssClass="btn btn-secondary separacion btn-small" Text="-" CommandName="Eliminar" CommandArgument='<%# Eval ("ID") %>' />
+                                <asp:Label ID="LabelCantidad" runat="server" CssClass="unidad-label separacion" Text='<%# Eval("Cantidad") %>'></asp:Label>
+                                <asp:Button ID="ButtonAgregar" runat="server" CssClass="btn btn-primary btn-small" Text="+" CommandName="Agregar" CommandArgument='<%#Eval ("ID") %>' />
+                            </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
