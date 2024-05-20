@@ -1,21 +1,14 @@
 ﻿using Modelo;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using Negocio;
-using System.Net;
 
 namespace TPASPWebForm_equipo_9
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
-        
-       
-        
-
         public List<ItemShop> carrito;
 
 
@@ -142,7 +135,12 @@ namespace TPASPWebForm_equipo_9
 
         protected void btnRedirigirCompra_Click(object sender, EventArgs e)
         {
+            ResetCarrito();
             Response.Redirect("CompraFinalizada.aspx");
+        }
+        private void ResetCarrito()
+        {
+            Session["Carrito"] = null;
         }
 
     }
