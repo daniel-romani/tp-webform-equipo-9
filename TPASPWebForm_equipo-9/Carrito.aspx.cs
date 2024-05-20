@@ -66,6 +66,7 @@ namespace TPASPWebForm_equipo_9
 
 
             }
+            master.CargarArticulosEnCarrito();
 
         }
 
